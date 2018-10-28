@@ -45,10 +45,7 @@ void setup() {
   //wdt_enable(WDTO_1S);
 }
 
-
-
 void loop() {    
-
 
   mesh.update();
   mesh.DHCP();
@@ -56,8 +53,7 @@ void loop() {
 counter++;
 if(a==2)
  lcd.clear();
- 
- 
+
   if(network.available()){
         if(counter%11==0)
   { 
@@ -74,17 +70,12 @@ if(a==2)
       lcd.setCursor(7,2);      lcd.print(String(C[2]/10)+"    ");
       counter = 0;}
       break;
-    
 
       default: 
       network.read(header,0,0); 
      break;
     }}
      a=((a<4)?a+1:a);}
-
-
-
-    
 
 if(tkn==true)
 {
@@ -100,18 +91,14 @@ if(counter%7==0 && a==4)
 
 }}
 
-
 if(counter==70)
 {counter=0;
  a=((a>1)?a-1:a);}
-
-
 
 if(a==1)
 {
          lcd.setCursor(4,1);      lcd.print("DISCONNECTED!");
 }
-
 
 if(a==3)
 {
