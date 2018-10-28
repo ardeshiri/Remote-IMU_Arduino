@@ -7,8 +7,6 @@ GND----GND
 2:TX---RX
 3:MINI_TX---FT232_RX
 */
-
-
 #include "RF24.h"
 #include "RF24Network.h"
 #include "RF24Mesh.h"
@@ -28,10 +26,7 @@ RF24Network network(radio);
 RF24Mesh mesh(radio, network);
 #define nodeID 7
 
-
 void serialEvent() {
-
- 
       while (Serial.available()) {   
       Re_buf[counter]=(unsigned char)Serial.read();
       if(counter==0&&Re_buf[0]!=0x5A) return;           
@@ -42,18 +37,13 @@ void serialEvent() {
          sign=1;
       }      
       }
-
 }
-
 void tisr (){
   for(int a=0;a<30000;++a);
   x = true;
 }
 
-
-
 void setup() {
-
   Serial.begin(9600);  
   pinMode(2,INPUT_PULLUP);
   attachInterrupt(digitalPinToInterrupt(2),tisr,FALLING); 
@@ -62,13 +52,10 @@ void setup() {
   Serial.write(0XAA); 
   Serial.write(0X38);  
   Serial.write(0XE2);
-
  mesh.setNodeID(nodeID);
   //Serial.println(F("Connecting to the mesh..."));
   mesh.begin();
-
  //radio.setDataRate(RF24_1MBPS);radio.setPALevel(RF24_PA_HIGH);
- 
 }
 
 void loop() {
@@ -98,8 +85,6 @@ void loop() {
   cc=C[2];
   x=false;
  }
-   
-
    if((alfa)==1200)
 {
   alfa =0;
