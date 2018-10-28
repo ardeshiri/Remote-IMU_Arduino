@@ -57,7 +57,6 @@ void setup() {
   mesh.begin();
  //radio.setDataRate(RF24_1MBPS);radio.setPALevel(RF24_PA_HIGH);
 }
-
 void loop() {
   mesh.update();
   unsigned char i=0,sum=0;
@@ -93,6 +92,5 @@ void loop() {
          C[2]=C[2]-cc;
          mesh.write(&C, 'M', sizeof(C));
 }
-
 alfa++;
 }
